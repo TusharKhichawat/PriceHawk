@@ -1,0 +1,2 @@
+# PriceHawk
+Intelligent Shopping Assistant
