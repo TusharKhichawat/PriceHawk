@@ -1,7 +1,11 @@
+import { Header } from "./components/Header";
+import { Home } from "./pages/Home";
+
 function App() {
   return (
-    <div className="p-6 text-3xl text-blue-600">
-      TailwindCSS is working!
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <Home />
     </div>
   );
 }
