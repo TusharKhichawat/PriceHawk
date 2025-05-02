@@ -1,30 +1,23 @@
-import { useState } from "react";
-import { HeroSection } from "../components/HeroSection";
+import React, { useState } from "react";
 import { SearchBar } from "../components/SearchBar";
 import { ProductList } from "../components/ProductList";
-import { DropdownMenu } from "../components/DropdownMenu";
-import { PopularSuggestions } from "../components/PopularSuggestions";
+import { Footer } from "../components/Footer";
 import { mockProducts } from "../data/mockProduct";
 
-export function Home() {
+export const Home = () => {
   const [query, setQuery] = useState("");
-  const [platform, setPlatform] = useState("All");
 
-  const handleSearch = (text) => setQuery(text);
-
-  const filteredProducts = mockProducts.filter((p) => {
-    const matchesSearch = p.name.toLowerCase().includes(query.toLowerCase());
-    const matchesPlatform = platform === "All" || p.platform === platform;
-    return matchesSearch && matchesPlatform;
-  });
+  const filteredProducts = mockProducts.filter((p) =>
+    p.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
-    <div>
-      <HeroSection />
-      <DropdownMenu selectedPlatform={platform} onSelect={setPlatform} />
-      <SearchBar onSearch={handleSearch} />
-      <PopularSuggestions onSearch={handleSearch} />
-      <ProductList products={filteredProducts} />
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4">
+        <SearchBar onSearch={setQuery} />
+        <ProductList products={filteredProducts} />
+      </main>
+      <Footer />
     </div>
   );
-}
+};

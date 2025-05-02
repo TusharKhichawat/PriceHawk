@@ -1,3 +1,5 @@
+import React from "react";
+
 export function DropdownMenu({selectedPlatform, onSelect}){
   const platforms=["All", "Amazon", "Flipkart", "AJIO"];
 
